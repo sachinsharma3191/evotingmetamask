@@ -5,7 +5,6 @@ body, html, #root, .app, .container {
 
 .container {
   font-size: 28px;
-  color: #fff;
   display: flex;
   width:100%;
   height:100%;

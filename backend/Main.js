@@ -13,12 +13,18 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 //DB
 const db = mysql.createConnection({
-    host: 'localhost',
+   /* host: 'localhost',
     user: 'root',
     password: 'Admin@123',
+    database: 'Evoting'*
+    */
+    host: 'localhost',
+    user: 'root',
+    password: 'sachin@123',
     database: 'Evoting'
 });
 
+console.log("Connecting to db");
 db.connect(function(err){
     if(err)
     {
@@ -26,7 +32,9 @@ db.connect(function(err){
         throw err;
         return false;
     }
+    console.log("Connection to db established");
 });
+
 
 const sessionStore = new MySQLStore({
     expiration : (1825 * 86400 * 1000),
@@ -50,5 +58,7 @@ app.get('/',function(req,res){
     res.sendFile(path.join(__dirname,'build','index.html'));
 })
 
-app.listen(3002);
+const port = 3002;
+console.log("Server started on port" + port);
+app.listen(port);
 
